@@ -1,7 +1,3 @@
-#!/bin/bash
-# Menu driven shell script demonstrating basic Unix commands,
-# essential commands, general purpose utilities/filters,
-# process and communication commands.
 
 while true
 do

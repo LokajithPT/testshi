@@ -15,7 +15,6 @@ int main() {
 
     printf("Parent Process ID: %d\n", getpid());
 
-    /* fork system call */
     pid = fork();
 
     if (pid < 0) {
@@ -23,31 +22,25 @@ int main() {
         exit(1);
     }
 
-    /* Child process */
     if (pid == 0) {
         printf("\nChild Process\n");
         printf("Child PID: %d\n", getpid());
 
-        /* exec system call */
         execlp("ls", "ls", "-l", NULL);
 
-        /* exec returns only on error */
         perror("Exec failed");
         exit(1);
     }
-    /* Parent process */
     else {
         wait(NULL); /* wait system call */
         printf("\nChild process finished execution.\n");
 
-        /* stat system call */
         if (stat("unix_syscalls_demo.c", &fileStat) == 0) {
             printf("\nFile Size: %ld bytes\n", fileStat.st_size);
         } else {
             perror("stat failed");
         }
 
-        /* opendir and readdir system calls */
         dir = opendir(".");
         if (dir == NULL) {
             perror("opendir failed");
@@ -59,7 +52,6 @@ int main() {
         }
         closedir(dir);
 
-        /* open and close system calls */
         fd = open("temp.txt", O_CREAT | O_WRONLY, 0644);
         if (fd >= 0) {
             write(fd, "Hello UNIX\n", 11);

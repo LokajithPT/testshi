@@ -1,6 +1,3 @@
-#!/bin/bash
-# Menu driven shell script to create, copy, rename, delete a file
-# and check read/write permissions on a given file.
 
 while true
 do
